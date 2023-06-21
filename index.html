@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Counter</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        #counter {
+            margin-right: 20px;
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <span id="counter">0</span>
+    <button id="increaseButton">Increase</button>
+
+    <script>
+        document.getElementById('increaseButton').addEventListener('click', function() {
+            fetch('http://localhost:8080/count')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('counter').textContent = data;
+                });
+        });
+    </script>
+</body>
+</html>
